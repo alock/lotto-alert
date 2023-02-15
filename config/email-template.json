@@ -1,0 +1,8 @@
+{
+  "from": "valid icloud email",
+  "fromOverride": "override icloud email",
+  "participants": {
+    "111": "valid participant email who has number 111",
+    "222": "valid participant email who has number 222"
+  }
+}

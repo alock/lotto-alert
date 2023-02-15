@@ -1,0 +1,146 @@
+{
+    "01/01/23": {
+        "amount": 200,
+        "reason": "New Year's Day"
+    },
+    "01/16/23": {
+        "amount": 50,
+        "reason": "Martin Luther King Jr Day"
+    },
+    "02/02/23": {
+        "amount": 50,
+        "reason": "Groundhog Day"
+    },
+    "02/12/23": {
+        "amount": 50,
+        "reason": "Lincoln's Birthday"
+    },
+    "02/14/23": {
+        "amount": 100,
+        "reason": "Valentine's Day"
+    },
+    "02/20/23": {
+        "amount": 50,
+        "reason": "President's Day"
+    },
+    "02/22/23": {
+        "amount": 40,
+        "reason": "Washington's Birthday"
+    },
+    "03/17/23": {
+        "amount": 50,
+        "reason": "St Patrick's Day"
+    },
+    "03/20/23": {
+        "amount": 50,
+        "reason": "the First Day of Spring"
+    },
+    "04/01/23": {
+        "amount": 60,
+        "reason": "April Fool's Day (for real)"
+    },
+    "04/02/23": {
+        "amount": 80,
+        "reason": "Palm Sunday"
+    },
+    "04/07/23": {
+        "amount": 75,
+        "reason": "Good Friday"
+    },
+    "04/09/23": {
+        "amount": 100,
+        "reason": "Easter"
+    },
+    "04/21/23": {
+        "amount": 50,
+        "reason": "John Muir's Birthday"
+    },
+    "04/22/23": {
+        "amount": 100,
+        "reason": "Earth Day"
+    },
+    "04/26/23": {
+        "amount": 50,
+        "reason": "John Audubon's Birthday"
+    },
+    "05/14/23": {
+        "amount": 125,
+        "reason": "Mother's Day"
+    },
+    "05/29/23": {
+        "amount": 100,
+        "reason": "Memorial Day"
+    },
+    "06/14/23": {
+        "amount": 50,
+        "reason": "Flag Day"
+    },
+    "06/18/23": {
+        "amount": 125,
+        "reason": "Father's Day"
+    },
+    "06/21/23": {
+        "amount": 50,
+        "reason": "the First Day of Summer"
+    },
+    "07/04/23": {
+        "amount": 150,
+        "reason": "Independence Day"
+    },
+    "09/04/23": {
+        "amount": 100,
+        "reason": "Labor Day"
+    },
+    "09/11/23": {
+        "amount": 50,
+        "reason": "Patriot's Day"
+    },
+    "09/22/23": {
+        "amount": 65,
+        "reason": "the First Day of Autumn"
+    },
+    "10/09/23": {
+        "amount": 50,
+        "reason": "Indigenous Peoples Day"
+    },
+    "10/31/23": {
+        "amount": 75,
+        "reason": "Halloween"
+    },
+    "11/07/23": {
+        "amount": 50,
+        "reason": "Election Day"
+    },
+    "11/11/23": {
+        "amount": 75,
+        "reason": "Veteran's Day"
+    },
+    "11/23/23": {
+        "amount": 200,
+        "reason": "Thanksgiving"
+    },
+    "12/07/23": {
+        "amount": 50,
+        "reason": "Pearl Harbor Day"
+    },
+    "12/09/23": {
+        "amount": 75,
+        "reason": "the day Wildlife Works Inc started"
+    },
+    "12/21/23": {
+        "amount": 75,
+        "reason": "the First Day of Winter"
+    },
+    "12/24/23": {
+        "amount": 150,
+        "reason": "Christmas Eve"
+    },
+    "12/25/23": {
+        "amount": 250,
+        "reason": "Christmas Day"
+    },
+    "12/31/23": {
+        "amount": 150,
+        "reason": "New Year's Eve"
+    }
+}
