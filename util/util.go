@@ -1,6 +1,7 @@
 package util
 
 import (
+	"fmt"
 	"time"
 )
 
@@ -11,4 +12,8 @@ func GetStringOfDate(t time.Time) string {
 
 func TruncateToDayValue(t time.Time) time.Time {
 	return time.Date(t.Year(), t.Month(), t.Day(), 0, 0, 0, 0, t.Location())
+}
+
+func PadLottoInt(i int) string {
+	return fmt.Sprintf("%03d", i)
 }

@@ -19,16 +19,22 @@ const webpage = "https://www.palottery.state.pa.us/Games/Print-Past-Winning-Numb
 func getFakeNums() (map[time.Time]int, []time.Time) {
 	nyd := time.Date(2023, 1, 1, 0, 0, 0, 0, time.Local)
 	randomDay := time.Date(2023, 2, 8, 0, 0, 0, 0, time.Local)
+	presDay := time.Date(2023, 2, 20, 0, 0, 0, 0, time.Local)
+	mommaDay := time.Date(2023, 5, 14, 0, 0, 0, 0, time.Local)
 	today := util.TruncateToDayValue(time.Now())
 	return map[time.Time]int{
 			nyd:       770,
 			randomDay: 123,
 			today:     770,
+			presDay:   889,
+			mommaDay:  52,
 		},
 		[]time.Time{
 			nyd,
 			randomDay,
 			today,
+			presDay,
+			mommaDay,
 		}
 }
 

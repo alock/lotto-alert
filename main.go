@@ -44,7 +44,7 @@ var (
 				if !*winners || (*winners && config.EmailStruct.Participants[winningNum] != "") {
 					table.Append([]string{
 						util.GetStringOfDate(date),
-						strconv.Itoa(winningNum),
+						util.PadLottoInt(winningNum),
 						strconv.Itoa(prize.Amount),
 						prize.Reason,
 						config.EmailStruct.Participants[winningNum],
@@ -65,20 +65,20 @@ var (
 			exactTime := time.Now()
 			today := util.TruncateToDayValue(exactTime)
 			winningNumbersMap, _ := scrape.GetWinningNumbers(*test)
-			winningNumberToday := winningNumbersMap[today]
-			if winningNumberToday == 0 {
+			todaysNumber := winningNumbersMap[today]
+			if todaysNumber == 0 {
 				fmt.Printf("winning was 0 at %v re-run later\n", exactTime)
 				return nil
 			}
 			prize := config.GetDatesPrizeInfo(today)
 			fmt.Println("date:", util.GetStringOfDate(today))
-			fmt.Println("winning number:", winningNumberToday)
+			fmt.Println("winning number:", util.PadLottoInt(todaysNumber))
 			fmt.Println("prize amount:", prize.Amount)
 			fmt.Println("reason:", prize.Reason)
-			emailAddress, ok := config.EmailStruct.Participants[winningNumberToday]
+			emailAddress, ok := config.EmailStruct.Participants[todaysNumber]
 			if ok {
 				fmt.Println("outcome: we have a winner")
-				message := email.GetMessage(today, winningNumberToday, prize)
+				message := email.GetMessage(today, todaysNumber, prize)
 				fmt.Println("email:", emailAddress)
 				fmt.Println("message:", message)
 				if *send != "" {
