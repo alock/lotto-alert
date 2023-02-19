@@ -67,7 +67,7 @@ var (
 			winningNumbersMap, _ := scrape.GetWinningNumbers(*test)
 			todaysNumber := winningNumbersMap[today]
 			if todaysNumber == 0 {
-				fmt.Printf("winning was 0 at %v re-run later\n", exactTime)
+				fmt.Printf("winning number was 0 at %v re-run later after 16:00:00 PST\n", exactTime.Format(time.DateTime))
 				return nil
 			}
 			prize := config.GetDatesPrizeInfo(today)
