@@ -23,17 +23,22 @@ const (
 func SendEmail(email, message, dotenv string) error {
 	err := godotenv.Load(dotenv)
 	if err != nil {
+		fmt.Println(err)
 		return errors.New("error loading .env file")
 	}
+	appToken, ok := os.LookupEnv("APP_SPECIFIC")
+	if !ok {
+		return errors.New("no valid email app token")
+	}
 	// apple mail server docs - https://support.apple.com/en-us/HT202304
-	to := []string{email}
-	auth := smtp.PlainAuth("", config.EmailStruct.From, os.Getenv("APP_SPECIFIC"), smtpHost)
+	auth := smtp.PlainAuth("", config.EmailStruct.From, appToken, smtpHost)
 	// stackoverflow post helping figure out how to change the sender
 	// https://stackoverflow.com/questions/71948786/how-to-use-smtp-with-apple-icloud-custom-domain
 	var body bytes.Buffer
 	mimeHeaders := "MIME-version: 1.0;\nContent-Type: text/plain; charset=\"UTF-8\";\n"
-	body.Write([]byte(fmt.Sprintf("To: %s\nFrom: %s\nSubject: Wildlife Works Winner \n%s%s", to[0], config.EmailStruct.FromOverride, mimeHeaders, message)))
-	err = smtp.SendMail(smtpHost+":"+smtpPort, auth, config.EmailStruct.From, to, body.Bytes())
+	body.Write([]byte(fmt.Sprintf("To: %s\nFrom: %s\nSubject: Wildlife Works Winner\n%s%s", email, config.EmailStruct.FromOverride, mimeHeaders, message)))
+	fmt.Println(string(body.Bytes()))
+	err = smtp.SendMail(smtpHost+":"+smtpPort, auth, config.EmailStruct.From, []string{email}, body.Bytes())
 	if err != nil {
 		return err
 	}
