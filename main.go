@@ -5,7 +5,6 @@ import (
 	"errors"
 	"flag"
 	"fmt"
-	"log"
 	"os"
 	"strconv"
 	"time"
@@ -26,9 +25,6 @@ var (
 	winners      = dumpFlagSet.Bool("winners", false, "show config winners only")
 	todayFlagSet = flag.NewFlagSet("today", flag.ExitOnError)
 	send         = todayFlagSet.String("send", "", "path for .env file to get app specific password and send email")
-	emailFlagSet = flag.NewFlagSet("email", flag.ExitOnError)
-	sendEmail    = emailFlagSet.String("send", "", "path for .env file to get app specific password and send email")
-	messageEmail = emailFlagSet.String("msg", "", "message to email")
 )
 
 var (
@@ -94,30 +90,13 @@ var (
 			return nil
 		},
 	}
-
-	testEmail = &ffcli.Command{
-		Name:       "email",
-		ShortUsage: "lotto-alert email [-send] [-msg]",
-		FlagSet:    emailFlagSet,
-		ShortHelp:  "try to send email",
-		Exec: func(ctx context.Context, args []string) error {
-			if *messageEmail == "" {
-				log.Fatal("must pass message flag")
-			}
-			if *sendEmail != "" {
-				return email.SendEmail("adamlock82@gmail.com", *messageEmail, *sendEmail)
-			}
-			fmt.Println("no email config file")
-			return nil
-		},
-	}
 )
 
 func main() {
 	config.LoadConfigs()
 	root := &ffcli.Command{
 		ShortUsage:  "lotto-alert [-test] <subcommand>",
-		Subcommands: []*ffcli.Command{dumpCmd, todayCmd, testEmail},
+		Subcommands: []*ffcli.Command{dumpCmd, todayCmd},
 		FlagSet:     rootFlagSet,
 		Exec:        func(context.Context, []string) error { return flag.ErrHelp },
 	}

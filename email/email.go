@@ -20,7 +20,7 @@ const (
 	smtpPort = "587"
 )
 
-func SendEmail(email, message, dotenv string) error {
+func SendEmail(toEmail, message, dotenv string) error {
 	err := godotenv.Load(dotenv)
 	if err != nil {
 		fmt.Println(err)
@@ -34,11 +34,10 @@ func SendEmail(email, message, dotenv string) error {
 	auth := smtp.PlainAuth("", config.EmailStruct.From, appToken, smtpHost)
 	// stackoverflow post helping figure out how to change the sender
 	// https://stackoverflow.com/questions/71948786/how-to-use-smtp-with-apple-icloud-custom-domain
+	rfc822style := fmt.Sprintf("From: %s\nTo: %s\nSubject: Wildlife Works Winner\n\n%s", config.EmailStruct.FromOverride, toEmail, message)
 	var body bytes.Buffer
-	mimeHeaders := "MIME-version: 1.0;\nContent-Type: text/plain; charset=\"UTF-8\";\n"
-	body.Write([]byte(fmt.Sprintf("To: %s\nFrom: %s\nSubject: Wildlife Works Winner\n%s%s", email, config.EmailStruct.FromOverride, mimeHeaders, message)))
-	fmt.Println(string(body.Bytes()))
-	err = smtp.SendMail(smtpHost+":"+smtpPort, auth, config.EmailStruct.From, []string{email}, body.Bytes())
+	body.Write([]byte(rfc822style))
+	err = smtp.SendMail(smtpHost+":"+smtpPort, auth, config.EmailStruct.From, []string{toEmail}, body.Bytes())
 	if err != nil {
 		return err
 	}
