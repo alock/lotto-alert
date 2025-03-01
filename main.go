@@ -90,13 +90,25 @@ var (
 			return nil
 		},
 	}
+
+	dumpCfgCmf = &ffcli.Command{
+		Name:       "dump-cfg",
+		ShortUsage: "dump-cfg",
+		ShortHelp:  "output baked config",
+		Exec: func(ctx context.Context, args []string) error {
+			for num, email := range config.EmailStruct.Participants {
+				fmt.Printf("%v -> %v\n", num, email)
+			}
+			return nil
+		},
+	}
 )
 
 func main() {
 	config.LoadConfigs()
 	root := &ffcli.Command{
 		ShortUsage:  "lotto-alert [-test] <subcommand>",
-		Subcommands: []*ffcli.Command{dumpCmd, todayCmd},
+		Subcommands: []*ffcli.Command{dumpCmd, todayCmd, dumpCfgCmf},
 		FlagSet:     rootFlagSet,
 		Exec:        func(context.Context, []string) error { return flag.ErrHelp },
 	}
