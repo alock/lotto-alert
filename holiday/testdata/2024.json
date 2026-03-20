@@ -1,0 +1,138 @@
+{
+    "01/01/24": {
+        "amount": 200,
+        "reason": "New Year's Day"
+    },
+    "01/15/24": {
+        "amount": 50,
+        "reason": "Martin Luther King Jr Day"
+    },
+    "02/02/24": {
+        "amount": 50,
+        "reason": "Groundhog Day"
+    },
+    "02/12/24": {
+        "amount": 50,
+        "reason": "Lincoln's Birthday"
+    },
+    "02/14/24": {
+        "amount": 100,
+        "reason": "Valentine's Day"
+    },
+    "02/19/24": {
+        "amount": 50,
+        "reason": "President's Day"
+    },
+    "03/17/24": {
+        "amount": 50,
+        "reason": "St Patrick's Day"
+    },
+    "03/19/24": {
+        "amount": 50,
+        "reason": "the First Day of Spring"
+    },
+    "03/24/24": {
+        "amount": 80,
+        "reason": "Palm Sunday"
+    },
+    "03/29/24": {
+        "amount": 75,
+        "reason": "Good Friday"
+    },
+    "03/31/24": {
+        "amount": 100,
+        "reason": "Easter"
+    },
+    "04/01/24": {
+        "amount": 60,
+        "reason": "April Fool's Day (for real)"
+    },
+    "04/21/24": {
+        "amount": 50,
+        "reason": "John Muir's Birthday"
+    },
+    "04/22/24": {
+        "amount": 100,
+        "reason": "Earth Day"
+    },
+    "04/26/24": {
+        "amount": 50,
+        "reason": "John Audubon's Birthday"
+    },
+    "05/12/24": {
+        "amount": 125,
+        "reason": "Mother's Day"
+    },
+    "05/27/24": {
+        "amount": 100,
+        "reason": "Memorial Day"
+    },
+    "06/16/24": {
+        "amount": 125,
+        "reason": "Father's Day"
+    },
+    "06/21/24": {
+        "amount": 50,
+        "reason": "the First Day of Summer"
+    },
+    "07/04/24": {
+        "amount": 150,
+        "reason": "Independence Day"
+    },
+    "09/02/24": {
+        "amount": 100,
+        "reason": "Labor Day"
+    },
+    "09/11/24": {
+        "amount": 50,
+        "reason": "Patriot's Day"
+    },
+    "09/22/24": {
+        "amount": 65,
+        "reason": "the First Day of Autumn"
+    },
+    "10/14/24": {
+        "amount": 50,
+        "reason": "Indigenous Peoples Day"
+    },
+    "10/31/24": {
+        "amount": 75,
+        "reason": "Halloween"
+    },
+    "11/05/24": {
+        "amount": 50,
+        "reason": "Election Day"
+    },
+    "11/11/24": {
+        "amount": 75,
+        "reason": "Veteran's Day"
+    },
+    "11/28/24": {
+        "amount": 200,
+        "reason": "Thanksgiving"
+    },
+    "12/07/24": {
+        "amount": 50,
+        "reason": "Pearl Harbor Day"
+    },
+    "12/09/24": {
+        "amount": 75,
+        "reason": "the day Wildlife Works Inc started"
+    },
+    "12/21/24": {
+        "amount": 75,
+        "reason": "the First Day of Winter"
+    },
+    "12/24/24": {
+        "amount": 150,
+        "reason": "Christmas Eve"
+    },
+    "12/25/24": {
+        "amount": 250,
+        "reason": "Christmas Day"
+    },
+    "12/31/24": {
+        "amount": 150,
+        "reason": "New Year's Eve"
+    }
+}

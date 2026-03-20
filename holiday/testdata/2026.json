@@ -1,0 +1,138 @@
+{
+    "01/01/26": {
+        "amount": 200,
+        "reason": "New Year's Day"
+    },
+    "01/19/26": {
+        "amount": 50,
+        "reason": "Martin Luther King Jr Day"
+    },
+    "02/02/26": {
+        "amount": 50,
+        "reason": "Groundhog Day"
+    },
+    "02/12/26": {
+        "amount": 50,
+        "reason": "Lincoln's Birthday"
+    },
+    "02/14/26": {
+        "amount": 100,
+        "reason": "Valentine's Day"
+    },
+    "02/16/26": {
+        "amount": 50,
+        "reason": "President's Day"
+    },
+    "03/17/26": {
+        "amount": 50,
+        "reason": "St Patrick's Day"
+    },
+    "03/20/26": {
+        "amount": 50,
+        "reason": "the First Day of Spring"
+    },
+    "03/29/26": {
+        "amount": 80,
+        "reason": "Palm Sunday"
+    },
+    "04/01/26": {
+        "amount": 60,
+        "reason": "April Fool's Day (for real)"
+    },
+    "04/03/26": {
+        "amount": 75,
+        "reason": "Good Friday"
+    },
+    "04/05/26": {
+        "amount": 100,
+        "reason": "Easter"
+    },
+    "04/21/26": {
+        "amount": 50,
+        "reason": "John Muir's Birthday"
+    },
+    "04/22/26": {
+        "amount": 100,
+        "reason": "Earth Day"
+    },
+    "04/26/26": {
+        "amount": 50,
+        "reason": "John Audubon's Birthday"
+    },
+    "05/10/26": {
+        "amount": 125,
+        "reason": "Mother's Day"
+    },
+    "05/25/26": {
+        "amount": 100,
+        "reason": "Memorial Day"
+    },
+    "06/19/26": {
+        "amount": 50,
+        "reason": "Juneteenth"
+    },
+    "06/21/26": {
+        "amount": 125,
+        "reason": "Father's Day"
+    },
+    "07/04/26": {
+        "amount": 150,
+        "reason": "Independence Day"
+    },
+    "09/07/26": {
+        "amount": 100,
+        "reason": "Labor Day"
+    },
+    "09/11/26": {
+        "amount": 50,
+        "reason": "Patriot's Day"
+    },
+    "09/22/26": {
+        "amount": 65,
+        "reason": "the First Day of Autumn"
+    },
+    "10/12/26": {
+        "amount": 50,
+        "reason": "Indigenous Peoples Day"
+    },
+    "10/31/26": {
+        "amount": 75,
+        "reason": "Halloween"
+    },
+    "11/03/26": {
+        "amount": 50,
+        "reason": "Election Day"
+    },
+    "11/11/26": {
+        "amount": 75,
+        "reason": "Veteran's Day"
+    },
+    "11/26/26": {
+        "amount": 200,
+        "reason": "Thanksgiving"
+    },
+    "12/07/26": {
+        "amount": 50,
+        "reason": "Pearl Harbor Day"
+    },
+    "12/09/26": {
+        "amount": 75,
+        "reason": "the day Wildlife Works Inc started"
+    },
+    "12/21/26": {
+        "amount": 75,
+        "reason": "the First Day of Winter"
+    },
+    "12/24/26": {
+        "amount": 150,
+        "reason": "Christmas Eve"
+    },
+    "12/25/26": {
+        "amount": 250,
+        "reason": "Christmas Day"
+    },
+    "12/31/26": {
+        "amount": 150,
+        "reason": "New Year's Eve"
+    }
+}

@@ -1,6 +1,7 @@
 package scrape
 
 import (
+	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -10,18 +11,16 @@ import (
 	"time"
 
 	"golang.org/x/net/html"
-
-	"github.com/alock/lotto-alert/util"
 )
 
-const webpage = "https://www.palottery.state.pa.us/Games/Print-Past-Winning-Numbers.aspx?id=28&year=2023&print=1"
+const webpageFormat = "https://www.palottery.state.pa.us/Games/Print-Past-Winning-Numbers.aspx?id=28&year=%d&print=1"
 
 func getFakeNums() (map[time.Time]int, []time.Time) {
-	nyd := time.Date(2023, 1, 1, 0, 0, 0, 0, time.Local)
-	randomDay := time.Date(2023, 2, 8, 0, 0, 0, 0, time.Local)
-	presDay := time.Date(2023, 2, 20, 0, 0, 0, 0, time.Local)
-	mommaDay := time.Date(2023, 5, 14, 0, 0, 0, 0, time.Local)
-	today := util.TruncateToDayValue(time.Now())
+	nyd := time.Date(time.Now().Year(), 1, 1, 0, 0, 0, 0, time.Local)
+	randomDay := time.Date(time.Now().Year(), 2, 8, 0, 0, 0, 0, time.Local)
+	presDay := time.Date(time.Now().Year(), 2, 20, 0, 0, 0, 0, time.Local)
+	mommaDay := time.Date(time.Now().Year(), 5, 14, 0, 0, 0, 0, time.Local)
+	today := truncateToDay(time.Now())
 	return map[time.Time]int{
 			nyd:       770,
 			randomDay: 123,
@@ -38,29 +37,31 @@ func getFakeNums() (map[time.Time]int, []time.Time) {
 		}
 }
 
-func GetWinningNumbers(testData bool) (map[time.Time]int, []time.Time) {
-	// get the winning numbers
+// GetWinningNumbers fetches and parses lottery results for the given years.
+// If testData is true, returns fake data for testing.
+func GetWinningNumbers(testData bool, years ...int) (map[time.Time]int, []time.Time) {
 	if testData {
 		return getFakeNums()
 	}
-	text, err := getHtmlPage(webpage)
-	if err != nil {
-		log.Fatal(err)
-	}
-	data := parsePaLottoResults(text)
 	m := make(map[time.Time]int)
-	for i := 0; i < len(data); i += 2 {
-		// probably don't need to place into a date object but this
-		// should have value if the scrapping of data is incorrect
-		d, err := time.ParseInLocation("1/2/2006", data[i], time.Local)
+	for _, year := range years {
+		url := fmt.Sprintf(webpageFormat, year)
+		text, err := getHtmlPage(url)
 		if err != nil {
 			log.Fatal(err)
 		}
-		num, err := strconv.Atoi(data[i+1])
-		if err != nil {
-			log.Fatal(err)
+		data := parsePaLottoResults(text)
+		for i := 0; i < len(data); i += 2 {
+			d, err := time.ParseInLocation("1/2/2006", data[i], time.Local)
+			if err != nil {
+				log.Fatal(err)
+			}
+			num, err := strconv.Atoi(data[i+1])
+			if err != nil {
+				log.Fatal(err)
+			}
+			m[truncateToDay(d)] = num
 		}
-		m[util.TruncateToDayValue(d)] = num
 	}
 
 	sortedDates := make([]time.Time, 0, len(m))
@@ -72,6 +73,10 @@ func GetWinningNumbers(testData bool) (map[time.Time]int, []time.Time) {
 	})
 
 	return m, sortedDates
+}
+
+func truncateToDay(t time.Time) time.Time {
+	return time.Date(t.Year(), t.Month(), t.Day(), 0, 0, 0, 0, t.Location())
 }
 
 func getHtmlPage(webPage string) (string, error) {

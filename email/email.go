@@ -11,7 +11,7 @@ import (
 	"github.com/joho/godotenv"
 
 	"github.com/alock/lotto-alert/config"
-	"github.com/alock/lotto-alert/util"
+	"github.com/alock/lotto-alert/prize"
 )
 
 const (
@@ -45,8 +45,8 @@ func SendEmail(toEmail, message, dotenv string) error {
 	return nil
 }
 
-func GetMessage(today time.Time, winningNumber int, prizeInfo config.PrizeInfo) string {
-	msg := fmt.Sprintf("Congrats! On %s the PICK 3 Evening Number was %s and you won $%v", today.Format("January 2"), util.PadLottoInt(winningNumber), prizeInfo.Amount)
+func GetMessage(today time.Time, winningNumber int, prizeInfo prize.Info) string {
+	msg := fmt.Sprintf("Congrats! On %s the PICK 3 Evening Number was %03d and you won $%v", today.Format("January 2"), winningNumber, prizeInfo.Amount)
 	if prizeInfo.Reason != "" {
 		msg = msg + fmt.Sprintf(" because it is %s", prizeInfo.Reason)
 	}
