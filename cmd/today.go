@@ -7,7 +7,7 @@ import (
 	"github.com/spf13/cobra"
 
 	"github.com/alock/lotto-alert/config"
-	"github.com/alock/lotto-alert/email"
+	"github.com/alock/lotto-alert/notify"
 	"github.com/alock/lotto-alert/prize"
 	"github.com/alock/lotto-alert/scrape"
 )
@@ -20,7 +20,10 @@ var todayCmd = &cobra.Command{
 	RunE: func(cmd *cobra.Command, args []string) error {
 		exactTime := time.Now()
 		today := time.Date(exactTime.Year(), exactTime.Month(), exactTime.Day(), 0, 0, 0, 0, exactTime.Location())
-		winningNumbersMap, _ := scrape.GetWinningNumbers(testMode, exactTime.Year())
+		winningNumbersMap, _, err := scrape.GetWinningNumbers(testMode, exactTime.Year())
+		if err != nil {
+			return err
+		}
 		todaysNumber := winningNumbersMap[today]
 		if todaysNumber == 0 {
 			fmt.Printf("winning number was 0 at %v re-run later after 16:00:00 PST\n", exactTime.Format(time.DateTime))
@@ -34,11 +37,11 @@ var todayCmd = &cobra.Command{
 		emailAddress, ok := config.EmailStruct.Participants[todaysNumber]
 		if ok {
 			fmt.Println("outcome: we have a winner")
-			message := email.GetMessage(today, todaysNumber, p)
+			message := notify.GetMessage(today, todaysNumber, p)
 			fmt.Println("email:", emailAddress)
 			fmt.Println("message:", message)
 			if send != "" {
-				return email.SendEmail(emailAddress, message, send)
+				return notify.SendEmail(emailAddress, message, send)
 			}
 			return nil
 		}

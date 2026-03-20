@@ -13,8 +13,8 @@ var testMode bool
 var rootCmd = &cobra.Command{
 	Use:   "lotto-alert",
 	Short: "PA Pick 3 Evening lottery alert system",
-	PersistentPreRun: func(cmd *cobra.Command, args []string) {
-		config.LoadConfigs()
+	PersistentPreRunE: func(cmd *cobra.Command, args []string) error {
+		return config.LoadConfigs()
 	},
 }
 

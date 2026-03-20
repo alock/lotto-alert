@@ -3,7 +3,6 @@ package config
 import (
 	_ "embed"
 	"encoding/json"
-	"log"
 )
 
 var (
@@ -18,9 +17,6 @@ type EmailConfig struct {
 	Participants map[int]string `json:"participants"`
 }
 
-func LoadConfigs() {
-	err := json.Unmarshal(emailConfigJson, &EmailStruct)
-	if err != nil {
-		log.Fatal(err)
-	}
+func LoadConfigs() error {
+	return json.Unmarshal(emailConfigJson, &EmailStruct)
 }

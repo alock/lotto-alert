@@ -1,9 +1,10 @@
-package email
+package notify
 
 import (
 	"bytes"
 	"errors"
 	"fmt"
+	"log/slog"
 	"net/smtp"
 	"os"
 	"time"
@@ -15,7 +16,6 @@ import (
 )
 
 const (
-	// smtp server configuration.
 	smtpHost = "smtp.mail.me.com"
 	smtpPort = "587"
 )
@@ -23,8 +23,7 @@ const (
 func SendEmail(toEmail, message, dotenv string) error {
 	err := godotenv.Load(dotenv)
 	if err != nil {
-		fmt.Println(err)
-		return errors.New("error loading .env file")
+		return fmt.Errorf("loading .env file %q: %w", dotenv, err)
 	}
 	appToken, ok := os.LookupEnv("APP_SPECIFIC")
 	if !ok {
@@ -39,9 +38,9 @@ func SendEmail(toEmail, message, dotenv string) error {
 	body.Write([]byte(rfc822style))
 	err = smtp.SendMail(smtpHost+":"+smtpPort, auth, config.EmailStruct.From, []string{toEmail}, body.Bytes())
 	if err != nil {
-		return err
+		return fmt.Errorf("sending email to %s: %w", toEmail, err)
 	}
-	fmt.Println("email sent")
+	slog.Info("email sent", "to", toEmail)
 	return nil
 }
 
