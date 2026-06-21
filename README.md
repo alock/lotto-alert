@@ -33,7 +33,7 @@ Add `--test` before any subcommand to use fake data instead of scraping the live
 
 ### Configuration
 
-**`config/email.json`** — participants and sender config (see `config/email-template.json` for the format):
+**`config/email.json`** — participants and sender config (copy `config/email-template.json` and fill it in):
 ```json
 {
   "from": "you@icloud.com",
@@ -44,6 +44,13 @@ Add `--test` before any subcommand to use fake data instead of scraping the live
   }
 }
 ```
+
+This file contains personal email addresses, so it is **gitignored and never committed**. It is loaded at runtime (not embedded), searched in this order:
+1. `$LOTTO_EMAIL_CONFIG` (explicit path)
+2. `config/email.json` (running from the repo root)
+3. `email.json` next to the executable (the Pi deploy layout — `make pi` copies it there)
+
+If none is found, the embedded placeholder template is used, so the app still builds and runs (it just never finds a winner) — which is what CI and `--test` rely on.
 
 **`.env`** — app-specific password for iCloud SMTP:
 ```
@@ -85,8 +92,8 @@ holiday/                 # holiday computation engine
   testdata/              # ground truth fixtures from 2023-2026
 prize/                   # prize lookup (holiday > Saturday $50 > weekday $30)
 scrape/                  # PA Lottery website scraper
-email/                   # iCloud SMTP sender
-config/                  # embedded participant config (email.json)
+notify/                  # iCloud SMTP sender
+config/                  # participant config loader (email.json at runtime; template embedded)
 ```
 
 ## Updating for a new year

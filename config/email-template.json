@@ -1,0 +1,8 @@
+{
+  "from": "you@icloud.com",
+  "fromOverride": "alias@yourdomain.com",
+  "participants": {
+    "123": "winner@example.com",
+    "456": "another@example.com"
+  }
+}

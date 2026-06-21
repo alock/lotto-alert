@@ -10,7 +10,7 @@ test:
 
 pi:
 	GOOS=linux GOARCH=arm GOARM=7 go build -o $(BINARY)
-	scp $(BINARY) pi.local:/home/pi/.local/bin
+	scp $(BINARY) config/email.json pi.local:/home/pi/.local/bin
 	rm $(BINARY)
 
 lint:
