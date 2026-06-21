@@ -12,7 +12,9 @@ import (
 	"golang.org/x/net/html"
 )
 
-const webpageFormat = "https://www.palottery.state.pa.us/Games/Print-Past-Winning-Numbers.aspx?id=28&year=%d&print=1"
+// The PA Lottery moved from palottery.state.pa.us (now a 301 redirect) to
+// palottery.pa.gov. Point directly at the canonical host to avoid the redirect.
+const webpageFormat = "https://www.palottery.pa.gov/Games/Print-Past-Winning-Numbers.aspx?id=28&year=%d&print=1"
 
 func getFakeNums() (map[time.Time]int, []time.Time) {
 	nyd := time.Date(time.Now().Year(), 1, 1, 0, 0, 0, 0, time.Local)
